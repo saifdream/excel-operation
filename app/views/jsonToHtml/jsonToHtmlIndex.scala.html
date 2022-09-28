@@ -1,0 +1,36 @@
+@(message: String)
+
+@main("Json TO Html") {
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("javascripts/angular/css/angular-material.min.css")">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("javascripts/app/json-to-html/css/app.css")">
+
+    <div ng-app="jsonToHtml"  ng-cloak>
+        <md-content class="md-padding" ng-init="currentNavItem = 'home'">
+            <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+                <md-nav-item md-nav-href="/" name="home">Home</md-nav-item>
+                <md-nav-item md-nav-href="/addEmployee" name="add">Add Employee</md-nav-item>
+                <md-nav-item md-nav-href="/editEmployee/1" name="edit">Edit Employee</md-nav-item>
+                <md-nav-item md-nav-href="/employeeList" name="list">Employee List</md-nav-item>
+            </md-nav-bar>
+            <div class="ext-content">
+                <div ng-view flex id="main"></div>
+            </div>
+        </md-content>
+    </div>
+
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-animate.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-route.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-sanitize.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-aria.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-messages.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-material.min.js")"></script>
+
+    <script src="@routes.Assets.versioned("javascripts/app/json-to-html/js/app.module.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/json-to-html/js/app.config.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/json-to-html/js/create-emp.module.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/json-to-html/js/create-emp.component.js")"></script>
+}

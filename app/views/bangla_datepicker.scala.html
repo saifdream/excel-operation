@@ -1,0 +1,96 @@
+@()
+<script src="@routes.Assets.versioned("js/jquery.js")"></script>
+<script src="@routes.Assets.versioned("js/jquery-ui-bangla.js")"></script>
+
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/jquery-ui.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("css/style.css")">
+
+<script>
+        $(function () {
+            var fullmonth_array = $.datepicker.regional['bn-BD'].monthNames;
+            $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+            $("#date_of_birth").datepicker({
+                dateFormat: "yy/mm/dd",
+                monthNamesShort: fullmonth_array,
+                changeMonth: true,
+                changeYear: true
+            }, $.datepicker.regional['bn-BD']);
+        });
+
+        $.get( "/randomDate", function( data ) {
+            console.log(data)
+            var numbers = {
+                0: '০',
+                1: '১',
+                2: '২',
+                3: '৩',
+                4: '৪',
+                5: '৫',
+                6: '৬',
+                7: '৭',
+                8: '৮',
+                9: '৯'
+            };
+
+            function engToBanglaDate(data) {
+                var input = data;
+                var output = [];
+                for (var i = 0; i < input.length; ++i) {
+                    if (numbers.hasOwnProperty(input[i])) {
+                        output.push(numbers[input[i]]);
+                    } else {
+                        output.push(input[i]);
+                    }
+                }
+
+                return output.join('');
+            }
+            document.getElementById('date_of_birth').value = engToBanglaDate(data);
+            console.log(engToBanglaDate(data))
+        });
+</script>
+
+<h1>বাংলা তারিখ (Bangla Date):</h1>
+<form action="/banglaDate">
+    <input type="text" id="date_of_birth" onchange="replaceNumbers()"/>
+    <input type="hidden" id="eng_date" name="eng_date">
+
+    <button onclick="replaceNumbers()"> save </button>
+</form>
+
+<script type="text/javascript">
+        $(document).on("change", "#date_of_birth", function () {
+            var dateArr = $(this).val().split('/');
+            var banglaDate = mrt(dateArr[0]) + '/' + mrt(dateArr[1]) + '/' + mrt(dateArr[2]);
+            $(this).val(banglaDate);
+        });
+
+        var numbers = {
+            '০': 0,
+            '১': 1,
+            '২': 2,
+            '৩': 3,
+            '৪': 4,
+            '৫': 5,
+            '৬': 6,
+            '৭': 7,
+            '৮': 8,
+            '৯': 9
+        };
+
+        function replaceNumbers() {
+            var input = document.getElementById('date_of_birth').value;
+            var output = [];
+            for (var i = 0; i < input.length; ++i) {
+                if (numbers.hasOwnProperty(input[i])) {
+                    output.push(numbers[input[i]]);
+                } else {
+                    output.push(input[i]);
+                }
+            }
+            document.getElementById('eng_date').value = output.join('');
+            return output.join('');
+        }
+
+        document.getElementById('eng_date').value = replaceNumbers();
+</script>

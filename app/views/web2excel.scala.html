@@ -1,0 +1,53 @@
+@()
+<div>
+    <h4>Web to Excel operation stared.</h4>
+
+    <button id="export" class="btn btn-sm btn-default" style="margin-top: 20px; margin-bottom: 20px;"
+        ng-click="web2excelCtrl.exportData()">Export</button>
+    @*ng-show="(web2excelCtrl.items | filter:{selected: true}).length"*@
+
+    <button class="btn btn-sm btn-default" ng-click="web2excelCtrl.exportToExcel('#exportable')">
+        Export to xls
+    </button>
+
+    <br/>
+    <div id="exportable">
+        <table id="report" class="table table-condensed table-striped table-hover">
+            <thead>
+                <tr>
+                    @*<th><input type="checkbox" onClick="toggle(this)"  /></th>*@
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>DoB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in web2excelCtrl.items">
+                    @*<td><input type="checkbox" name="item" ng-model="item.selected" /></td>*@
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.dob}}</td> @*| date:'MM/dd/yy'*@
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    @*<div id="exportable" style="display:none">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>DoB</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in web2excelCtrl.items | filter:{selected: true}">
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.dob | date:'MM/dd/yy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>*@
+</div>

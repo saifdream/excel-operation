@@ -1,0 +1,51 @@
+{
+	"createFields" : [
+		{
+			"type" : "text",
+			"label" : "Name",
+			"name" : "fullName",
+			"placeholder" : "Full Name",
+			"pattern" : "",
+			"required" : true
+		}, {
+			"type" : "email",
+			"label" : "E-mail",
+			"name" : "email",
+			"placeholder" : "E-mail",
+			"pattern" : "",
+			"required" : true
+		}, {
+			"type" : "password",
+			"label" : "Password",
+			"name" : "password",
+			"placeholder" : "Password",
+			"pattern" : "",
+			"required" : true
+		}, {
+			"type" : "radio",
+			"label" : "Gender",
+			"name" :"gender",
+			"required" : true,
+			"options" : [ "Male", "Female" ]
+		}, {
+			"type" : "select",
+			"label" : "User Type",
+			"name" :"userType",
+			"required" : true,
+			"options" : [ "Admin", "Accountant", "Executive" ]
+		}, {
+			"type" : "textarea",
+			"label" : "Address",
+			"name" :"address",
+			"placeholder" : "Full Address",
+			"pattern" : "",
+			"required" : false
+		}, {
+			"type" : "checkbox",
+			"label" : "Agree?",
+			"name" :"isAgree",
+			"required" : true,
+			"massage" : "I agree"
+		}
+	]
+}

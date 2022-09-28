@@ -1,0 +1,55 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String)
+
+@*
+ * Call the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Excel Operation") {
+
+    @*
+     * Get an `Html` object by calling the built-in Play welcome
+     * template and passing a `String` message.
+     *@
+    @*play20.welcome(message, style = "Java")*@
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap/css/bootstrap.min.css")">
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap/css/bootstrap-theme.min.css")">
+
+    <div class="container" ng-app="excelOperation" ng-cloak>
+        <h3>Welcome to Excel Operation Application</h3>
+
+        <ul class="list-inline">
+            <li><a href="/">0. Home</a></li>
+            <li><a href="/excel2web">1. Excel To Web</a></li>
+            <li><a href="/web2excel">2. Web To Excel</a></li>
+        </ul>
+
+        <div ng-view></div>
+
+    </div>
+
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-animate.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/angular/js/angular-route.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/excel-export-lib/js/FileSaver.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/excel-export-lib/js/jquery-3.1.0.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/excel-export-lib/js/xlsx.core.min.js")"></script>
+    @*<script src="@routes.Assets.versioned("javascripts/excel-export-lib/js/Blob.js")"></script>*@
+    <script src="@routes.Assets.versioned("javascripts/excel-export-lib/js/FileSaver.min.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/excel-export-lib/js/tableexport.min.js")"></script>
+    @*<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>*@
+    @*<script src="https://cdn.firebase.com/libs/angularfire/2.0.2/angularfire.min.js"></script>*@
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/app.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/app.config.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/excel.factory.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/generateColumnHeader.service.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/excel2WebGrid.service.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/indexController.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/excel2webController.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/web2excelController.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/app/excel-operation/js/editRowController.js")"></script>
+}

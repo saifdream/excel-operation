@@ -1,0 +1,60 @@
+@()
+<div class="container">
+    <h4>Excel to Web operation stared.</h4>
+
+    <h6>Predefined Header & Column</h6>
+    <textarea class="form-control input-sm" style="" rows="10" cols="100"
+        ng-model="excel2webCtrl.stringData"></textarea>
+    <br/>
+    <button class="btn btn-sm btn-default" style="margin-top: 20px; margin-bottom: 20px;"
+        ng-click="excel2webCtrl.getGridData(excel2webCtrl.stringData)">Get Grid Data</button>
+    <br/>
+    <div>
+        <table class="table table-condensed table-striped table-hover">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Address</th>
+                <th>Contact</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in excel2webCtrl.gridData">
+                    <td><a ng-href="/edit/{{data.id}}">{{data.id}}</a></td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.address}}</td>
+                    <td>{{data.contact}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <br/>
+    <h6>Not Predefined Header & Column</h6>
+    <textarea class="form-control input-sm" style="" rows="10" cols="100"
+        ng-model="excel2webCtrl.gridString"></textarea>
+
+    <br/>
+    <button class="btn btn-sm btn-default" style="margin-top: 20px; margin-bottom: 20px;"
+        ng-click="excel2webCtrl.generateGrid(excel2webCtrl.gridString)">Get Dynamic Grid Data</button>
+    <button class="btn btn-sm btn-default" style="margin-top: 20px; margin-bottom: 20px;"
+            ng-click="excel2webCtrl.saveJsonData(excel2webCtrl.gridHeader,excel2webCtrl.gridBodyData)">
+        Save Grid Data
+    </button>
+    <br/>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th ng-repeat="c in excel2webCtrl.gridHeader">{{ c.title | uppercase }}</th>
+                </tr>
+            </thead>
+        <tbody>
+            <tr ng-repeat="d in excel2webCtrl.gridBodyData">
+                <td ng-repeat="c in excel2webCtrl.gridHeader">{{ d[c.title] }}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
